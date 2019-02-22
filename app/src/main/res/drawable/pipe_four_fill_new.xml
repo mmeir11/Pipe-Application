@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@drawable/pipe_four_fill41"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_four_fill42"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_four_fill43"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_four_fill44"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_four_fill45"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_four_fill46"
+        android:duration="250"/>
+
+</animation-list>

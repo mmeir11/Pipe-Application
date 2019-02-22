@@ -1,0 +1,120 @@
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background4"
+        android:id="@+id/kbv"/>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo"
+            android:id="@+id/logoTitle"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logoTitle"
+            android:gravity="center"
+            android:id="@+id/welcome_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:layout_below="@id/logoTitle"
+                    android:id="@+id/welcome_Tv"/>
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="player1"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:layout_below="@id/logoTitle"
+                    android:id="@+id/name_TextView"/>
+
+
+        </LinearLayout>
+
+
+
+
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/play_btn"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/space2"
+            android:id="@+id/play_btn"/>
+
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/welcome_layout"
+            android:id="@+id/space2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/option_layout">
+
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/menu_btn"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    android:id="@+id/tableRecord_ImageButton"/>
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/howto_btn"
+                    android:scaleType="fitXY"
+                    android:background="@null" />
+
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/settings_btn"
+                    android:scaleType="fitXY"
+                    android:background="@null"
+                    android:id="@+id/setting_Ib"/>
+
+        </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/root_Layout"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:background="@drawable/background_3_2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="Time: "
+            android:id="@+id/countDown_TextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="Moves: "
+            android:layout_toStartOf="@id/moves_TextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:id="@+id/moves_TextView"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown">
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_blue_fork_top"
+            android:id="@+id/p1"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_grey_straight"
+            android:id="@+id/p2"
+            android:layout_toEndOf="@id/p1"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_grey_borders_righttop"
+            android:id="@+id/p3"
+            android:layout_toEndOf="@id/p2"/>
+
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_grey_fork_top"
+            android:id="@+id/p4"
+            android:layout_below="@id/p3"
+            android:layout_toEndOf="@id/p2"/>
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_grey_borders_lefttop"
+            android:id="@+id/p5"
+            android:layout_below="@id/p4"
+            android:layout_toEndOf="@id/p2"/>
+
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerInside"
+            android:background="@null"
+            android:src="@drawable/pipe_blue_straight"
+            android:id="@+id/p6"
+            android:layout_below="@id/p4"
+            android:layout_toEndOf="@id/p3"/>
+
+
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/p5"
+            android:id="@+id/space1"/>
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/space1"
+            android:id="@+id/space2"/>
+
+    </RelativeLayout>
+</LinearLayout>

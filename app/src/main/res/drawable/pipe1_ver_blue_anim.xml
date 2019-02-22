@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@drawable/pipe1_ver"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue_fill1"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue_fill2"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue_fill3"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue_fill4"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue_fill5"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe1_ver_blue"
+        android:duration="250"/>
+</animation-list>

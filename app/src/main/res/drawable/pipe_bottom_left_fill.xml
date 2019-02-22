@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@drawable/pipe_left_bottom_fill1"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill2"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill3"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill4"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill5"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill6"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill7"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill8"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill9"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill10"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill11"
+        android:duration="250"/>
+    <item android:drawable="@drawable/pipe_left_bottom_fill12"
+        android:duration="250"/>
+</animation-list>

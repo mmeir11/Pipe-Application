@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">projectV2</string>
+    <string name="volume">Sound</string>
+    <string name="mute">Mute</string>
+    <string name="HowToPlay">How to play</string>
+    <string name="exit_dialog">Are you sure you want to leave?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="changeName">Change your name</string>
+    <string name="welcome">Welcome</string>
+    <string name="tableScore">Table Score</string>
+    <string name="name">Name:</string>
+    <string name="score">Score:</string>
+</resources>

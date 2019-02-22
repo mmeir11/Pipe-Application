@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item android:drawable="@drawable/pipe_fork_top_fill21"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_fork_top_fill22"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_fork_top_fill23"
+        android:duration="250"/>
+
+    <item android:drawable="@drawable/pipe_fork_top_fill24"
+        android:duration="250"/>
+
+</animation-list>
