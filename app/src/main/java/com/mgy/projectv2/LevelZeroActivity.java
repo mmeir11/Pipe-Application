@@ -21,7 +21,7 @@ import static maes.tech.intentanim.CustomIntent.customType;
 
 public class LevelZeroActivity extends Activity {
 
-    GameObject gameObject = new GameObject();
+    GameObject gameObject = new GameObject(LevelZeroActivity.this, 0);
 
     ImageButton p1, p2, p3, p4, p5, p6, p7,
             p8;
@@ -91,7 +91,7 @@ public class LevelZeroActivity extends Activity {
 
         gameObject.minimumMoves = 4;
         gameObject.minimumTime = 5000;
-        gameObject.maxTimeToFinish = 15000; //15 sec
+        gameObject.maxTimeToFinish = 10000; //10 sec
         gameObject.CountDownTimer(); //Count Down Timer
 
     }
@@ -137,6 +137,7 @@ public class LevelZeroActivity extends Activity {
 
     private void SetAnim()
     {
+        gameObject.countDownTimer.cancel();
 
         p1.setEnabled(false);
         p2.setEnabled(false);
@@ -193,9 +194,9 @@ public class LevelZeroActivity extends Activity {
 
         levelTitleTv.setText("Level 1");
         timeTv.setText(gameObject.countDownTv.getText());
-        movesTv.setText(gameObject.moveTv.getText());
+        movesTv.setText("Moves: " + gameObject.moveTv.getText());
 
-        int lastScore = 100 - (  Integer.parseInt(movesTv.getText().toString()) / gameObject.minimumMoves  )*10;
+        int lastScore = 100 - (  Integer.parseInt(gameObject.moveTv.getText().toString()) / gameObject.minimumMoves  )*10;
 
         int usersArrayListSize = gameObject.users.size()-1;
         User currentUser = gameObject.users.get(usersArrayListSize);
@@ -229,8 +230,10 @@ public class LevelZeroActivity extends Activity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(finishDialog_Layout);
         dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         if(!isFinishing())
             dialog.show();
+
 
         nextBtn.setOnClickListener(new View.OnClickListener() { //Next to level One
             @Override
@@ -271,7 +274,6 @@ public class LevelZeroActivity extends Activity {
 
                 intent.putExtra("level", 0);
 
-                finish();
                 startActivity(intent);
                 customType(LevelZeroActivity.this,"fadein-to-fadeout");
 
@@ -286,4 +288,15 @@ public class LevelZeroActivity extends Activity {
         super.finish();
         customType(this,"up-to-bottom");
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, LevelsActivity.class);
+
+        startActivity(intent);
+        customType(this,"up-to-bottom");
+
+    }
+
 }

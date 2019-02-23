@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">projectV2</string>
-    <string name="volume">שמע</string>
-    <string name="mute">ללא שמע</string>
+    <string name="soundOn">שמע</string>
+    <string name="soundOff">ללא שמע</string>
     <string name="HowToPlay">איך משחקים</string>
     <string name="exit_dialog">האם אתה בטוח שברצונך לצאת?</string>
     <string name="yes">כן</string>
@@ -12,4 +12,5 @@
     <string name="tableScore">טבלת ניקוד</string>
     <string name="name">"שם: "</string>
     <string name="score">"ניקוד: "</string>
+    <string name="gameOver">המשחק נגמר</string>
 </resources>

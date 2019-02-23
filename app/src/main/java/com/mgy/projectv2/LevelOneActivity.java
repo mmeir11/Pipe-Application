@@ -22,14 +22,9 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
 
 
     int move = 0;
-    TextView countDownTv, moveTv;
     AnimationDrawable animation;
 
-    Pipe pipe1, pipe2, pipe3, pipe4,pipe7,pipe6,pipe5,pipe8,
-            pipe9,pipe10,pipe11,pipe13,pipe14,pipe12;
-
-
-    GameObject gameObject = new GameObject();
+    GameObject gameObject = new GameObject(this, 1);
 
     ImageButton p1, p2, p3, p4, p5, p6, p7,
             p8, p9, p10, p11, p12, p13, p14;
@@ -81,24 +76,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
         gameObject.AddToPipeList(new Pipe(p14, true, 2, 0));//12
         gameObject.AddToPipeList(new Pipe(p12, true, 0, 0));//13
 
-//============================================
-      /*  pipe1 = new Pipe(p1, true, 0, 0);//0
-        pipe2 = new Pipe(p2, false, 2, 1);//1
-        pipe3 = new Pipe(p3, false, 4, 2);//2
-        pipe4 = new Pipe(p4, true, 0, 0);//3
-        pipe7 = new Pipe(p7, false, 4, 1);//4
-        pipe6 = new Pipe(p6, false, 4, 0);//5
-        pipe5 = new Pipe(p5, true, 0, 0);//6
-        pipe8 = new Pipe(p8, false, 4, 3);//7
-        pipe9 = new Pipe(p9, false, 2, 1);//8
-        pipe10 = new Pipe(p10, true, 0, 0);//9
-        pipe11 = new Pipe(p11, true, 2, 0);//10
-        pipe13 = new Pipe(p13, false, 4, 2);//11
-        pipe14 = new Pipe(p14, true, 2, 0);//12
-        pipe12 = new Pipe(p12, true, 0, 0);//13
 
-        Pipe []pipeArray = {pipe1, pipe2, pipe3, pipe6, pipe7, pipe9, pipe13, pipe14};*/
-//============================================
 
         gameObject.pipeArrayList.get(1).pipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,6 +211,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
 
     private void SetAnim()
     {
+        gameObject.countDownTimer.cancel();
 
         p1.setEnabled(false);
         p2.setEnabled(false);
@@ -306,9 +285,9 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
 
         levelTitleTv.setText("Level 2");
         timeTv.setText(gameObject.countDownTv.getText());
-        movesTv.setText(gameObject.moveTv.getText());
+        movesTv.setText("Moves: " + gameObject.moveTv.getText());
 
-        int lastScore = 100 - (  Integer.parseInt(movesTv.getText().toString()) / gameObject.minimumMoves  )*10;
+        int lastScore = 100 - (  Integer.parseInt(gameObject.moveTv.getText().toString()) / gameObject.minimumMoves  )*10;
 
         int usersArrayListSize = gameObject.users.size()-1;
         User currentUser = gameObject.users.get(usersArrayListSize);
@@ -342,8 +321,10 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(finishDialog_Layout);
         dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         if(!isFinishing())
             dialog.show();
+
 
         //Next to level Two
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -390,7 +371,6 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
 
                 intent.putExtra("level", current_level);
 
-                finish();
                 startActivity(intent);
                 customType(LevelOneActivity.this,"fadein-to-fadeout");
 
@@ -404,6 +384,15 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
     public void finish() {
         super.finish();
         customType(this,"up-to-bottom");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, LevelsActivity.class);
+
+        startActivity(intent);
+        customType(this, "up-to-bottom");
     }
 
 

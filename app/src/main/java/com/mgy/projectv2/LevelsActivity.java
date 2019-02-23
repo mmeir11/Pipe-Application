@@ -2,6 +2,8 @@ package com.mgy.projectv2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +11,10 @@ import android.widget.Button;
 import static maes.tech.intentanim.CustomIntent.customType;
 
 public class LevelsActivity extends Activity implements Button.OnClickListener {
+
+    private MediaPlayer mediaPlayer;
+    private SharedPreferences sp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +32,29 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
         levelOne_Btn.setOnClickListener(this);
         levelTwo_Btn.setOnClickListener(this);
         levelFour_Btn.setOnClickListener(this);
+
+
+        sp = getSharedPreferences("details", MODE_PRIVATE);
+        mediaPlayer = MediaPlayer.create(this, R.raw.bubbling_water);
+        mediaPlayer.setLooping(true);
+        PlayMusic();
+
+
     }
 
+    private void PlayMusic()
+    {
+        mediaPlayer.setLooping(true);
+
+        if(sp.getBoolean("music", true)){
+            mediaPlayer.start();
+        }
+        else{
+            if(mediaPlayer.isPlaying())
+                mediaPlayer.pause();
+        }
+
+    }
 
     @Override
     public void onClick(View view) {
@@ -50,6 +77,7 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
 
         }
 
+        finish();
         startActivity(intent);
         customType(this,"fadein-to-fadeout");
     }
@@ -57,6 +85,13 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
     @Override
     public void finish() {
         super.finish();
-        customType(this,"fadein-to-fadeout");
+//        customType(this,"fadein-to-fadeout");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+                customType(this,"fadein-to-fadeout");
+
     }
 }

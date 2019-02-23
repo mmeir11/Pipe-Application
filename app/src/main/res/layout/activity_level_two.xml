@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="@drawable/top_background2">
+        android:background="@drawable/top_background3">
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +42,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/green">
+        android:gravity="center"
+        android:background="@drawable/underground_background1">
 
         <ImageButton
             android:layout_width="70dp"
@@ -151,7 +152,7 @@
             android:layout_height="70dp"
             android:scaleType="centerInside"
             android:background="@null"
-            android:src="@drawable/pipe_grey_four"
+            android:src="@drawable/pipe_grey_straight"
             android:id="@+id/p11"
             android:layout_below="@id/p6"
             android:layout_toEndOf="@id/p10"/>

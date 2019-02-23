@@ -21,7 +21,7 @@ import static maes.tech.intentanim.CustomIntent.customType;
 public class LevelTwoActivity extends Activity {
 
 
-    GameObject gameObject = new GameObject();
+    GameObject gameObject = new GameObject(this, 2);
 
     ImageButton pS, p1, p2, p3, p4, p5, p6, p7,
             p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20;
@@ -292,6 +292,8 @@ public class LevelTwoActivity extends Activity {
     private void SetAnim()
     {
 
+        gameObject.countDownTimer.cancel();
+
         for (Pipe pipe : gameObject.pipeArrayList)
             pipe.pipeImage.setEnabled(false);
 
@@ -358,9 +360,9 @@ public class LevelTwoActivity extends Activity {
 
         levelTitleTv.setText("Level 3");
         timeTv.setText(gameObject.countDownTv.getText());
-        movesTv.setText(gameObject.moveTv.getText());
+        movesTv.setText("Moves: " + gameObject.moveTv.getText());
 
-        int lastScore = 100 - (  Integer.parseInt(movesTv.getText().toString()) / gameObject.minimumMoves  )*10;
+        int lastScore = 100 - (  Integer.parseInt(gameObject.moveTv.getText().toString()) / gameObject.minimumMoves  )*10;
 
         int usersArrayListSize = gameObject.users.size()-1;
         User currentUser = gameObject.users.get(usersArrayListSize);
@@ -394,8 +396,10 @@ public class LevelTwoActivity extends Activity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(finishDialog_Layout);
         dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         if(!isFinishing())
             dialog.show();
+
 
         //Next to level Two
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -442,7 +446,6 @@ public class LevelTwoActivity extends Activity {
 
                 intent.putExtra("level", current_level);
 
-                finish();
                 startActivity(intent);
                 customType(LevelTwoActivity.this,"fadein-to-fadeout");
             }
@@ -457,4 +460,13 @@ public class LevelTwoActivity extends Activity {
         customType(this,"up-to-bottom");
     }
 
-}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, LevelsActivity.class);
+
+        startActivity(intent);
+        customType(this, "up-to-bottom");
+    }
+
+    }

@@ -2,8 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/finish_level_background"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -66,32 +65,46 @@
 
         <Button
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@drawable/level_btn2"
             android:text="Levels"
             android:textColor="#fff"
             android:textStyle="bold"
             android:id="@+id/levels_Btn"/>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="match_parent" />
+
         <Button
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@drawable/level_btn2"
             android:text="Next"
             android:textColor="#fff"
             android:textStyle="bold"
             android:id="@+id/nextLevel_Btn"/>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="match_parent" />
+
         <Button
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@drawable/level_btn2"
             android:text="Restart"
             android:textColor="#fff"
             android:textStyle="bold"
             android:id="@+id/restart_Btn"/>
 
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="match_parent" />
+
         <Button
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:background="@drawable/level_btn2"
             android:text="Score Table"
             android:textColor="#fff"

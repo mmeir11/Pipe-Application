@@ -23,7 +23,7 @@ import static maes.tech.intentanim.CustomIntent.customType;
 
 public class LevelFourActivity extends Activity {
 
-    GameObject gameObject = new GameObject();
+    GameObject gameObject = new GameObject(this, 4);
 
     ImageButton p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23,
             p30, p31, p32, p33, p40, p41, p42, p43;
@@ -275,6 +275,8 @@ public class LevelFourActivity extends Activity {
     private void SetAnim(final ArrayList<Pipe> pipeArray)
     {
 
+        gameObject.countDownTimer.cancel();
+
         for (Pipe pipe : gameObject.pipeArrayList)
             pipe.pipeImage.setEnabled(false);
 
@@ -357,9 +359,9 @@ public class LevelFourActivity extends Activity {
         final int current_level = 4;
         levelTitleTv.setText("Level " + current_level);
         timeTv.setText(gameObject.countDownTv.getText());
-        movesTv.setText(gameObject.moveTv.getText());
+        movesTv.setText("Moves: " + gameObject.moveTv.getText());
 
-        int lastScore = 100 - (  Integer.parseInt(movesTv.getText().toString()) / gameObject.minimumMoves  )*10;
+        int lastScore = 100 - (  Integer.parseInt(gameObject.moveTv.getText().toString()) / gameObject.minimumMoves  )*10;
 
         int usersArrayListSize = gameObject.users.size()-1;
         User currentUser = gameObject.users.get(usersArrayListSize);
@@ -393,8 +395,10 @@ public class LevelFourActivity extends Activity {
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(finishDialog_Layout);
         dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         if(!isFinishing())
             dialog.show();
+
 
         //Next to level Two
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -441,8 +445,7 @@ public class LevelFourActivity extends Activity {
 
                 intent.putExtra("level", current_level);
 
-                finish();
-                startActivity(intent);
+                 startActivity(intent);
                 customType(LevelFourActivity.this,"fadein-to-fadeout");
             }
         });
@@ -455,5 +458,14 @@ public class LevelFourActivity extends Activity {
     public void finish() {
         super.finish();
         customType(this,"up-to-bottom");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, LevelsActivity.class);
+
+        startActivity(intent);
+        customType(this, "up-to-bottom");
     }
 }
