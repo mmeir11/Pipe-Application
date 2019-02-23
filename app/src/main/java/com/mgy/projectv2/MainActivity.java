@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*    Dialog dialog = new Dialog(MainActivity.this);
+          /* Dialog dialog = new Dialog(MainActivity.this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             dialog.setContentView(menuDialog_Layout);

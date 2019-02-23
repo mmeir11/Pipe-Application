@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
 import static maes.tech.intentanim.CustomIntent.customType;
 
 public class LevelZeroActivity extends Activity {
@@ -147,21 +148,60 @@ public class LevelZeroActivity extends Activity {
         p6.setEnabled(false);
 
 
-        p2.setImageResource(R.drawable.pipe_straight_fill_new);
-        p3.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        p4.setImageResource(R.drawable.pipe_fork_top_fill_new);
-        p5.setImageResource(R.drawable.pipe_borders_lefttop_fill_new);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            p2.setImageResource(R.drawable.pipe_straight_fill_new);
+                            gameObject.animation = (AnimationDrawable) p2.getDrawable();
+                            gameObject.animation.start();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                try {
+                    sleep(800);
+                } catch (Exception e) {
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p3.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
+                        gameObject.animation = (AnimationDrawable) p3.getDrawable();
+                        gameObject.animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p4.setImageResource(R.drawable.pipe_fork_left_fill_new);
+                        gameObject.animation = (AnimationDrawable) p4.getDrawable();
+                        gameObject.animation.start();
+                    }
+                });
+                try{
+                    sleep(800);
+                }catch(Exception e){ e.printStackTrace(); }
 
-
-        gameObject.animation = (AnimationDrawable) p2.getDrawable();
-        gameObject.animation.start();
-        gameObject.animation = (AnimationDrawable) p3.getDrawable();
-        gameObject.animation.start();
-        gameObject.animation = (AnimationDrawable) p4.getDrawable();
-        gameObject.animation.start();
-        gameObject.animation = (AnimationDrawable) p5.getDrawable();
-        gameObject.animation.start();
-
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run () {
+                        p5.setImageResource(R.drawable.pipe_borders_lefttop_fill_new);
+                        gameObject.animation = (AnimationDrawable) p5.getDrawable();
+                        gameObject.animation.start();
+                    }
+                });
+            }
+        }).start();
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {        //pop Finish Dialog
@@ -170,8 +210,7 @@ public class LevelZeroActivity extends Activity {
             {
                 PopFinishDialog();
             }
-        }, 2000);
-
+        }, 3200);
 
     }
 

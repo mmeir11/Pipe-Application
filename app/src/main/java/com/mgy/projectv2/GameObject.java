@@ -145,7 +145,7 @@ public class GameObject extends Activity {
         pipe.currentRotation++;
         Rotate(view);
 
-        if((pipe.currentRotation % pipe.rotationOptions ==0 )) {
+        if((pipe.currentRotation % pipe.rotationOptions == 0 )) {
             pipe.isConnection = true;
         }else{
             pipe.isConnection = false;
