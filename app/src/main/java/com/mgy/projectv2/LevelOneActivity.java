@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
 import static maes.tech.intentanim.CustomIntent.customType;
 
 public class LevelOneActivity extends Activity implements ImageButton.OnClickListener {
@@ -24,6 +25,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
     int move = 0;
     AnimationDrawable animation;
 
+    private ArrayList<Pipe> arrayListToCheck;
     GameObject gameObject = new GameObject(this, 1);
 
     ImageButton p1, p2, p3, p4, p5, p6, p7,
@@ -138,7 +140,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
 
 
         //Thread to check when the user finish
-        ArrayList<Pipe> arrayListToCheck = new ArrayList<>();
+        arrayListToCheck = new ArrayList<>();
         arrayListToCheck.add(gameObject.pipeArrayList.get(0));
         arrayListToCheck.add(gameObject.pipeArrayList.get(1));
         arrayListToCheck.add(gameObject.pipeArrayList.get(2));
@@ -198,7 +200,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
                                     SetAnim();
                                 }
                             });
-                            Thread.sleep(300);
+                            sleep(300);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -228,29 +230,88 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
         p13.setEnabled(false);
         p14.setEnabled(false);
 
-        p2.setImageResource(R.drawable.pipe_vertical_fill_new);
-        p9.setImageResource(R.drawable.pipe_straight_fill_new);
-        p14.setImageResource(R.drawable.pipe_straight_fill_new);
-        p3.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        p7.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        p6.setImageResource(R.drawable.pipe_fork_top_fill_new);
-        p13.setImageResource(R.drawable.pipe_borders_leftbottom_fill_new);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            p2.setImageResource(R.drawable.pipe_vertical_fill_new);
+                            animation = (AnimationDrawable) p2.getDrawable();
+                            animation.start();
+                        }catch (Exception e) { e.printStackTrace(); }
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p3.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
+                        animation = (AnimationDrawable) p3.getDrawable();
+                        animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p7.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
+                        animation = (AnimationDrawable) p7.getDrawable();
+                        animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p6.setImageResource(R.drawable.pipe_fork_top_fill_new);
+                        animation = (AnimationDrawable) p6.getDrawable();
+                        animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
 
-
-        animation = (AnimationDrawable) p2.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p3.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p7.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p6.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p13.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p9.getDrawable();
-        animation.start();
-        animation = (AnimationDrawable) p14.getDrawable();
-        animation.start();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p9.setImageResource(R.drawable.pipe_straight_fill_new);
+                        animation = (AnimationDrawable) p9.getDrawable();
+                        animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p13.setImageResource(R.drawable.pipe_borders_bot_left_fill_new);
+                        animation = (AnimationDrawable) p13.getDrawable();
+                        animation.start();
+                    }
+                });
+                try {
+                    sleep(800);
+                }catch (Exception e) {}
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        p14.setImageResource(R.drawable.pipe_straight_fill_new);
+                        animation = (AnimationDrawable) p14.getDrawable();
+                        animation.start();
+                    }
+                });
+            }
+        }).start();
 
 
 
@@ -261,7 +322,7 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
             {
                 PopFinishDialog();
             }
-        }, 2000);
+        }, 5600);
 
 
     }
