@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,10 +39,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         sp = getSharedPreferences("details", MODE_PRIVATE);
+
         name_TextView = findViewById(R.id.name_TextView);
+        TextView welcome_TextView = findViewById(R.id.welcome_Tv);
+      /*  Typeface face=Typeface.createFromAsset(this.getAssets(), "fonts/Onick.otf");
+        name_TextView.setTypeface(face);
+        welcome_TextView.setTypeface(face);*/
 
 
-            if(sp.contains("notFirstRun"))   //if not first run set save name
+
+        if(sp.contains("notFirstRun"))   //if not first run set save name
             {
                 try     //initialize the users ArrayList for score table
                 {

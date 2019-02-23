@@ -74,7 +74,6 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
             case R.id.levelFour_Btn:
                 intent = new Intent(this, LevelFourActivity.class);
                 break;
-
         }
 
         finish();
@@ -85,13 +84,21 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
     @Override
     public void finish() {
         super.finish();
-//        customType(this,"fadein-to-fadeout");
+
+        if(mediaPlayer.isPlaying())
+            mediaPlayer.pause();
+        }
+
+    @Override
+    protected void onPause() {
+        if(mediaPlayer.isPlaying())
+            mediaPlayer.pause();
+        super.onPause();
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-                customType(this,"fadein-to-fadeout");
-
+    protected void onResume() {
+        super.onResume();
+        PlayMusic();
     }
 }

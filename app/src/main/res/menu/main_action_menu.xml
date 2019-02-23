@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/soundOn"
+        android:title="@string/soundOn"
+        app:showAsAction="always"
+        android:icon="@drawable/volume_button"
+        />
+
+    <item
+        android:id="@+id/soundOff"
+        android:title="@string/soundOff"
+        app:showAsAction="always"
+        android:icon="@drawable/mute_button"/>
+
+    <item
+        android:id="@+id/changeName"
+        android:title="@string/changeName"
+        app:showAsAction="never"/>
+
+
+</menu>

@@ -23,13 +23,14 @@ public class LevelZeroActivity extends Activity {
 
     GameObject gameObject = new GameObject(LevelZeroActivity.this, 0);
 
-    ImageButton p1, p2, p3, p4, p5, p6, p7,
-            p8;
+    ImageButton p1, p2, p3, p4, p5, p6, p7, p8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_zero);
+
+//        gameObject.PlayMusic();
 
         gameObject.moveTv = findViewById(R.id.moves_TextView);
         gameObject.countDownTv = findViewById(R.id.countDown_TextView);
@@ -286,6 +287,7 @@ public class LevelZeroActivity extends Activity {
     @Override
     public void finish() {
         super.finish();
+
         customType(this,"up-to-bottom");
     }
 
