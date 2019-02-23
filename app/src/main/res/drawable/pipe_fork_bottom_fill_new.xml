@@ -3,15 +3,15 @@
     android:oneshot="true">
 
     <item android:drawable="@drawable/pipe_fork_bottom_fill21"
-        android:duration="250"/>
+        android:duration="200"/>
 
     <item android:drawable="@drawable/pipe_fork_bottom_fill22"
-        android:duration="250"/>
+        android:duration="200"/>
 
     <item android:drawable="@drawable/pipe_fork_bottom_fill23"
-        android:duration="250"/>
+        android:duration="200"/>
 
     <item android:drawable="@drawable/pipe_fork_bottom_fill24"
-        android:duration="250"/>
+        android:duration="200"/>
 
 </animation-list>

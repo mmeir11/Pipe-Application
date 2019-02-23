@@ -3,21 +3,21 @@
     android:oneshot="true">
 
     <item android:drawable="@drawable/pipe_vertical_filla"
-        android:duration="250"/>
+        android:duration="125"/>
 
     <item android:drawable="@drawable/pipe_vertical_fillb"
-        android:duration="250"/>
+        android:duration="125"/>
 
     <item android:drawable="@drawable/pipe_vertical_fillc"
-        android:duration="250"/>
+        android:duration="125"/>
 
     <item android:drawable="@drawable/pipe_vertical_filld"
-        android:duration="250"/>
+        android:duration="125"/>
 
     <item android:drawable="@drawable/pipe_vertical_fille"
-        android:duration="250"/>
+        android:duration="125"/>
 
     <item android:drawable="@drawable/pipe_vertical_fillf"
-        android:duration="250"/>
+        android:duration="125"/>
 
 </animation-list>
