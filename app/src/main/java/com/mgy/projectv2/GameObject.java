@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -27,13 +29,17 @@ public class GameObject extends Activity {
     int level;
     Context context;
     CountDownTimer countDownTimer;
+//     MediaPlayer mediaPlayer;
 
-//    Dialog dialog;
 
     public GameObject(Context context, int level){
+
         this.context = context;
         this.level = level;
 
+
+     /*   mediaPlayer = MediaPlayer.create(this.context, R.raw.bubbling_water);
+        mediaPlayer.setLooping(true);*/
     }
 
     public GameObject(int level){
@@ -54,7 +60,6 @@ public class GameObject extends Activity {
     int minimumMoves = 0;
     int minimumTime = 1;
     int maxTimeToFinish = 100000;
-//    var score = ((minimumTime/finishedSeconds)*(minimumMoves/moveCount))*highestScorePossible)
 
     public void AddToPipeList(Pipe pipe){
         pipeArrayList.add(pipe);
@@ -167,5 +172,20 @@ public class GameObject extends Activity {
         }
 //        countDownTv.setText(pipe.isConnection+" ");
     }
+
+ /*   public void PlayMusic()
+    {
+        mediaPlayer.setLooping(true);
+
+        if(sp.getBoolean("music", true)){
+            mediaPlayer.start();
+        }
+        else{
+            if(mediaPlayer.isPlaying())
+                mediaPlayer.pause();
+        }
+
+    }*/
+
 
 }
