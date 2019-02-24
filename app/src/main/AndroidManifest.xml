@@ -30,7 +30,8 @@
         <activity android:name=".LevelsActivity" />
         <activity android:name=".TableScoreActivity" />
         <activity android:name=".LevelFourActivity" />
-        <activity android:name=".LevelThreeActivity"></activity>
+        <activity android:name=".LevelThreeActivity" />
+        <activity android:name=".LevelFiveActivity"></activity>
     </application>
 
 </manifest>

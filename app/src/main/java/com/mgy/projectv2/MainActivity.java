@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(item.getItemId() == R.id.changeName){
 
-            View changeNameDialog_Layout = getLayoutInflater().inflate(R.layout.change_name_dialog, null);
+            final View changeNameDialog_Layout = getLayoutInflater().inflate(R.layout.change_name_dialog, null);
 
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
                         name_TextView.setText(newName);
                         editNameEt.setText("");
                         Toast.makeText(MainActivity.this, "The Edit was succsses " + newName, Toast.LENGTH_SHORT).show();
+
 
                         users.add(new User(newName));   //save the new player in last index in ArrayList
                         try {   //save the names and score ArrayList

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -294,6 +295,12 @@ public class LevelTwoActivity extends Activity {
 
         gameObject.countDownTimer.cancel();
 
+        MediaPlayer mediaPlayerWin = MediaPlayer.create(this, R.raw.win_sound);
+        if(gameObject.sp.getBoolean("music", true))
+        {
+            mediaPlayerWin.start();
+        }
+
         for (Pipe pipe : gameObject.pipeArrayList)
             pipe.pipeImage.setEnabled(false);
 
@@ -405,7 +412,7 @@ public class LevelTwoActivity extends Activity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelTwoActivity.this, LevelTwoActivity.class);
+                Intent intent = new Intent(LevelTwoActivity.this, LevelThreeActivity.class);
                 finish();
                 startActivity(intent);
                 customType(LevelTwoActivity.this,"left-to-right");

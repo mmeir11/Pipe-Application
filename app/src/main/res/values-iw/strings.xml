@@ -13,4 +13,6 @@
     <string name="name">"שם: "</string>
     <string name="score">"ניקוד: "</string>
     <string name="gameOver">המשחק נגמר</string>
+    <string name="time">"     זמן:    "</string>
+    <string name="move">"   הזזות:   "</string>
 </resources>

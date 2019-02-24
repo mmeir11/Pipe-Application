@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -34,6 +36,11 @@ public class LevelZeroActivity extends Activity {
 
         gameObject.moveTv = findViewById(R.id.moves_TextView);
         gameObject.countDownTv = findViewById(R.id.countDown_TextView);
+
+        Typeface face=Typeface.createFromAsset(/*context.*/getAssets(), "fonts/Sez.ttf");
+        gameObject.moveTv.setTypeface(face);
+        gameObject.countDownTv.setTypeface(face);
+
         gameObject.sp = getSharedPreferences("details", MODE_PRIVATE);
         try {
             gameObject.users = (ArrayList<User>) ObjectSerializer.deserialize(gameObject.sp.getString("users", ObjectSerializer.serialize(new ArrayList<String>())));
@@ -139,6 +146,12 @@ public class LevelZeroActivity extends Activity {
     private void SetAnim()
     {
         gameObject.countDownTimer.cancel();
+
+        MediaPlayer mediaPlayerWin = MediaPlayer.create(this, R.raw.win_sound);
+        if(gameObject.sp.getBoolean("music", true))
+        {
+            mediaPlayerWin.start();
+        }
 
         p1.setEnabled(false);
         p2.setEnabled(false);

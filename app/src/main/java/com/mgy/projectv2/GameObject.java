@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -29,22 +30,10 @@ public class GameObject extends Activity {
     int level;
     Context context;
     CountDownTimer countDownTimer;
-//     MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayerClickPipe;
+    MediaPlayer mediaPlayerFailure;
+    MediaPlayer mediaPlayerWin /*= MediaPlayer.create(this, R.raw.win_sound)*/;
 
-
-    public GameObject(Context context, int level){
-
-        this.context = context;
-        this.level = level;
-
-
-     /*   mediaPlayer = MediaPlayer.create(this.context, R.raw.bubbling_water);
-        mediaPlayer.setLooping(true);*/
-    }
-
-    public GameObject(int level){
-        this.level = level;
-    }
 
 
     public ArrayList<Pipe> pipeArrayList = new ArrayList<>();
@@ -61,22 +50,39 @@ public class GameObject extends Activity {
     int minimumTime = 1;
     int maxTimeToFinish = 100000;
 
+
+    public GameObject(Context context, int level){
+
+        this.context = context;
+        this.level = level;
+
+    }
+
     public void AddToPipeList(Pipe pipe){
         pipeArrayList.add(pipe);
     }
 
+
     public void CountDownTimer()
     {
-        /*CountDownTimer*/ countDownTimer =  new CountDownTimer(maxTimeToFinish, 1000)
+        countDownTimer =  new CountDownTimer(maxTimeToFinish, 1000)
         {
             public void onTick(long millisUntilFinished) {
                 String v = String.format("%02d", millisUntilFinished/60000);
                 int va = (int)( (millisUntilFinished%60000)/1000);
-                countDownTv.setText("Time: " + v + ":" + String.format("%02d",va));
+//                countDownTv.setText("Time: " + v + ":" + String.format("%02d",va));
+                countDownTv.setText(v + ":" + String.format("%02d",va));
             }
             public void onFinish() {    //when finish GAME OVER alert dialong
 
 //                countDownTv.setText("done!");
+
+                final MediaPlayer mediaPlayerClickPipe = MediaPlayer.create(context, R.raw.failure_sound);
+                if(sp.getBoolean("music", true))
+                {
+                    mediaPlayerClickPipe.start();
+                }
+
 
                 final LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View gameOverDialog_Layout = inflater.inflate(R.layout.game_over_dialong, null);
@@ -87,6 +93,7 @@ public class GameObject extends Activity {
                 restartBtn.setOnClickListener(new View.OnClickListener() { //Restart
                     // Override
                     public void onClick(View view) {
+                        mediaPlayerClickPipe.pause();
                         Intent intent = new Intent(context , context.getClass());
                         ((Activity) context).finish();
                         context.startActivity(intent);
@@ -98,6 +105,7 @@ public class GameObject extends Activity {
                 levelsBtn.setOnClickListener(new View.OnClickListener() { //Next to level One
                     @Override
                     public void onClick(View view) {
+                        mediaPlayerClickPipe.pause();
                         Intent intent = new Intent(context , LevelsActivity.class);
                         ((Activity) context).finish();
                         context.startActivity(intent);
@@ -124,10 +132,16 @@ public class GameObject extends Activity {
     }
 
     public void Rotate(View view){
-        /*view.animate()
-                .rotationBy(90)
-                .setDuration(100)
-                .start();*/
+
+
+        if(mediaPlayerClickPipe == null) {
+             mediaPlayerClickPipe = MediaPlayer.create(this.context, R.raw.click_pipe);
+        }
+        if(sp.getBoolean("music", true))
+        {
+//            MediaPlayer mediaPlayerClickPipe = MediaPlayer.create(this.context, R.raw.click_pipe);
+            mediaPlayerClickPipe.start();
+        }
 
         Animation anim = new ScaleAnimation(
                 1f, 1.25f, // Start and end values for the X axis scaling

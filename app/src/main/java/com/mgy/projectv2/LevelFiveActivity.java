@@ -1,37 +1,37 @@
 package com.mgy.projectv2;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
+        import android.app.Activity;
+        import android.app.Dialog;
+        import android.content.Intent;
+        import android.graphics.drawable.AnimationDrawable;
+        import android.os.Bundle;
+        import android.os.Handler;
+        import android.view.View;
+        import android.view.Window;
+        import android.view.animation.Animation;
+        import android.view.animation.AnimationSet;
+        import android.view.animation.ScaleAnimation;
+        import android.view.animation.TranslateAnimation;
+        import android.widget.Button;
+        import android.widget.ImageButton;
+        import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
+        import java.io.IOException;
+        import java.util.ArrayList;
 
-import static maes.tech.intentanim.CustomIntent.customType;
+        import static maes.tech.intentanim.CustomIntent.customType;
 
-public class LevelThreeActivity extends Activity {
+public class LevelFiveActivity extends Activity {
 
-    GameObject gameObject = new GameObject(this, 4);
+    GameObject gameObject = new GameObject(this, 5);
 
     ImageButton p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23,
-            p30, p31, p32, p33, p40, p41, p42, p43;
-
+            p30, p31, p32, p33;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_three);
-
-
+        setContentView(R.layout.activity_level_five);
 
         gameObject.countDownTv = findViewById(R.id.countDown_TextView);
         gameObject.moveTv = findViewById(R.id.moves_TextView);
@@ -57,43 +57,37 @@ public class LevelThreeActivity extends Activity {
         p31 = findViewById(R.id.p31);
         p32 = findViewById(R.id.p32);
         p33 = findViewById(R.id.p33);
-        p40 = findViewById(R.id.p40);
-        p41 = findViewById(R.id.p41);
-        p42 = findViewById(R.id.p42);
-        p43 = findViewById(R.id.p43);
 
-        gameObject.AddToPipeList(new Pipe(p00, true, 0, 0));//0 - start
-        gameObject.AddToPipeList(new Pipe(p01, false, 4, 1)); //1
-        gameObject.AddToPipeList(new Pipe(p02, true, 4, 0));//2
-        gameObject.AddToPipeList(new Pipe(p03, true, 0, 0));//3   - end
-        gameObject.AddToPipeList(new Pipe(p10, true, 0, 0));//4
-        gameObject.AddToPipeList(new Pipe(p11, false, 2, 1));//5
-        gameObject.AddToPipeList(new Pipe(p12, false, 4, 2));//6
-        gameObject.AddToPipeList(new Pipe(p13, false, 4, 3));//7
-        gameObject.AddToPipeList(new Pipe(p20, false, 4, 1));//8
-        gameObject.AddToPipeList(new Pipe(p21, false, 4, 1));//9
+        gameObject.AddToPipeList(new Pipe(p00, false, 4, 1));//0
+        gameObject.AddToPipeList(new Pipe(p01, true, 0, 0)); //1 - start
+        gameObject.AddToPipeList(new Pipe(p02, true, 0, 0));//2
+        gameObject.AddToPipeList(new Pipe(p03, true, 0, 0));//3
+        gameObject.AddToPipeList(new Pipe(p10, false, 2, 1));//4 --
+        gameObject.AddToPipeList(new Pipe(p11, true, 4, 0));//5 --
+        gameObject.AddToPipeList(new Pipe(p12, false, 2, 1));//6 --
+        gameObject.AddToPipeList(new Pipe(p13, true, 4, 0));//7 --
+        gameObject.AddToPipeList(new Pipe(p20, true, 2, 0));//8 --
+        gameObject.AddToPipeList(new Pipe(p21, false, 2, 1));//9 --
         gameObject.AddToPipeList(new Pipe(p22, true, 0, 0));//10
-        gameObject.AddToPipeList(new Pipe(p23, true, 2, 0));//11
-        gameObject.AddToPipeList(new Pipe(p30, true, 4, 0));//12
-        gameObject.AddToPipeList(new Pipe(p31, false, 2, 1));//13
-        gameObject.AddToPipeList(new Pipe(p32, true, 2, 0));//14
-        gameObject.AddToPipeList(new Pipe(p33, true, 4, 1));//15
+        gameObject.AddToPipeList(new Pipe(p23, true, 0, 0));//11
+        gameObject.AddToPipeList(new Pipe(p30, false, 4, 2));//12 --
+        gameObject.AddToPipeList(new Pipe(p31, false, 4, 2));//13 --
+        gameObject.AddToPipeList(new Pipe(p32, true, 0, 0));//14
+        gameObject.AddToPipeList(new Pipe(p33, true, 0, 0));//15
 
 
-
-
-        gameObject.pipeArrayList.get(1).pipeImage.setOnClickListener(new View.OnClickListener() {
+        gameObject.pipeArrayList.get(0).pipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(1), view);
+                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(0), view);
             }
         });
-        gameObject.pipeArrayList.get(2).pipeImage.setOnClickListener(new View.OnClickListener() {
+        gameObject.pipeArrayList.get(4).pipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(2), view);
+                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(4), view);
             }
         });
         gameObject.pipeArrayList.get(5).pipeImage.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +109,7 @@ public class LevelThreeActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(7), view);
+                gameObject.CheckPipeTwoOption(gameObject.pipeArrayList.get(7), view, 0, 1);
             }
         });
         gameObject.pipeArrayList.get(8).pipeImage.setOnClickListener(new View.OnClickListener() {
@@ -131,14 +125,6 @@ public class LevelThreeActivity extends Activity {
             public void onClick(View view) {
 
                 gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(9), view);
-
-            }
-        });
-        gameObject.pipeArrayList.get(11).pipeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(11), view);
 
             }
         });
@@ -158,25 +144,15 @@ public class LevelThreeActivity extends Activity {
 
             }
         });
-        gameObject.pipeArrayList.get(14).pipeImage.setOnClickListener(new View.OnClickListener() {
+
+        gameObject.pipeArrayList.get(2).pipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(14), view);
-
+                gameObject.Rotate(view);
             }
         });
-        gameObject.pipeArrayList.get(15).pipeImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                gameObject.CheckPipeOneOption(gameObject.pipeArrayList.get(15), view);
-
-            }
-        });
-
-
-        gameObject.pipeArrayList.get(4).pipeImage.setOnClickListener(new View.OnClickListener() {
+        gameObject.pipeArrayList.get(3).pipeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -190,20 +166,40 @@ public class LevelThreeActivity extends Activity {
                 gameObject.Rotate(view);
             }
         });
+        gameObject.pipeArrayList.get(11).pipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                gameObject.Rotate(view);
+            }
+        });
+        gameObject.pipeArrayList.get(14).pipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                gameObject.Rotate(view);
+            }
+        });
+        gameObject.pipeArrayList.get(15).pipeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                gameObject.Rotate(view);
+            }
+        });
+
 
 
         ArrayList<Pipe> arrayListToCheck = new ArrayList<>();   //Pipe Array to Check
-        arrayListToCheck.add(gameObject.pipeArrayList.get(1));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(2));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(5));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(6));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(7));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(8));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(9));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(11));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(12));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(13));
-        arrayListToCheck.add(gameObject.pipeArrayList.get(14));
+        arrayListToCheck.add(gameObject.pipeArrayList.get(0));// 0
+        arrayListToCheck.add(gameObject.pipeArrayList.get(4));// 1
+        arrayListToCheck.add(gameObject.pipeArrayList.get(5));// 2
+        arrayListToCheck.add(gameObject.pipeArrayList.get(6));// 3
+        arrayListToCheck.add(gameObject.pipeArrayList.get(7));// 4
+        arrayListToCheck.add(gameObject.pipeArrayList.get(8));// 5
+        arrayListToCheck.add(gameObject.pipeArrayList.get(9));// 6
+        arrayListToCheck.add(gameObject.pipeArrayList.get(12));// 7
+        arrayListToCheck.add(gameObject.pipeArrayList.get(13));// 8
         CheckIfFinishThread(arrayListToCheck);   //Thread to check when the user finish
 
 
@@ -257,55 +253,37 @@ public class LevelThreeActivity extends Activity {
 
         gameObject.countDownTimer.cancel();
 
-        MediaPlayer mediaPlayerWin = MediaPlayer.create(this, R.raw.win_sound);
-        if(gameObject.sp.getBoolean("music", true))
-        {
-            mediaPlayerWin.start();
-        }
-
         for (Pipe pipe : gameObject.pipeArrayList)
             pipe.pipeImage.setEnabled(false);
 
 
-        gameObject.pipeArrayList.get(1).pipeImage.setImageResource(R.drawable.pipe_borders_lefttop_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(1).pipeImage.getDrawable();
+        pipeArray.get(0).pipeImage.setImageResource(R.drawable.pipe_borders_leftbottom_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(0).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(2).pipeImage.setImageResource(R.drawable.pipe_borders_rightbottom_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(2).pipeImage.getDrawable();
+        pipeArray.get(1).pipeImage.setImageResource(R.drawable.pipe_straight_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(1).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(5).pipeImage.setImageResource(R.drawable.pipe_straight_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(5).pipeImage.getDrawable();
+        pipeArray.get(2).pipeImage.setImageResource(R.drawable.pipe_borders_rightbottom_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(2).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(6).pipeImage.setImageResource(R.drawable.pipe_borders_leftbottom_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(6).pipeImage.getDrawable();
+        pipeArray.get(3).pipeImage.setImageResource(R.drawable.pipe_vertical_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(3).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(7).pipeImage.setImageResource(R.drawable.pipe_borders_rightbottom_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(7).pipeImage.getDrawable();
+        pipeArray.get(4).pipeImage.setImageResource(R.drawable.pipe_fork_bottom_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(4).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(8).pipeImage.setImageResource(R.drawable.pipe_borders_leftbottom_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(8).pipeImage.getDrawable();
+        pipeArray.get(5).pipeImage.setImageResource(R.drawable.pipe_straight_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(5).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(9).pipeImage.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(9).pipeImage.getDrawable();
+        pipeArray.get(6).pipeImage.setImageResource(R.drawable.pipe_straight_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(6).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(11).pipeImage.setImageResource(R.drawable.pipe_vertical_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(11).pipeImage.getDrawable();
+        pipeArray.get(7).pipeImage.setImageResource(R.drawable.pipe_borders_leftbottom_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(7).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(12).pipeImage.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(12).pipeImage.getDrawable();
+        pipeArray.get(8).pipeImage.setImageResource(R.drawable.pipe_borders_rightbottom_fill_new);
+        gameObject.animation = (AnimationDrawable) pipeArray.get(8).pipeImage.getDrawable();
         gameObject.animation.start();
-        gameObject.pipeArrayList.get(13).pipeImage.setImageResource(R.drawable.pipe_vertical_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(13).pipeImage.getDrawable();
-        gameObject.animation.start();
-        gameObject.pipeArrayList.get(14).pipeImage.setImageResource(R.drawable.pipe_straight_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(14).pipeImage.getDrawable();
-        gameObject.animation.start();
-        gameObject.pipeArrayList.get(15).pipeImage.setImageResource(R.drawable.pipe_borders_righttop_fill_new);
-        gameObject.animation = (AnimationDrawable) gameObject.pipeArrayList.get(15).pipeImage.getDrawable();
-        gameObject.animation.start();
-
-
-
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {        //pop Finish Dialog
@@ -336,7 +314,7 @@ public class LevelThreeActivity extends Activity {
         Button restartBtn = finishDialog_Layout.findViewById(R.id.restart_Btn);
         Button scoreTableBtn = finishDialog_Layout.findViewById(R.id.scoreTable_Btn);
 
-        final int current_level = 3;
+        final int current_level = 4;
         levelTitleTv.setText("Level " + current_level);
         timeTv.setText(gameObject.countDownTv.getText());
         movesTv.setText("Moves: " + gameObject.moveTv.getText());
@@ -345,6 +323,7 @@ public class LevelThreeActivity extends Activity {
 
         int usersArrayListSize = gameObject.users.size()-1;
         User currentUser = gameObject.users.get(usersArrayListSize);
+//        final int current_level = 4;
 
         if(currentUser.scoreArray[current_level] < lastScore)   //if the last score lower update
             currentUser.scoreArray[current_level] = lastScore;
@@ -369,7 +348,7 @@ public class LevelThreeActivity extends Activity {
         } catch (IOException e) {e.printStackTrace(); }
 
 
-        Dialog dialog = new Dialog(LevelThreeActivity.this);
+        Dialog dialog = new Dialog(LevelFiveActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.setContentView(finishDialog_Layout);
@@ -380,25 +359,25 @@ public class LevelThreeActivity extends Activity {
 
 
         //Next to level Two
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+       /* nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelThreeActivity.this, LevelFourActivity.class);
+                Intent intent = new Intent(LevelFiveActivity.this, LevelFourActivity.class);
                 finish();
                 startActivity(intent);
-                customType(LevelThreeActivity.this,"left-to-right");
+                customType(LevelFiveActivity.this,"left-to-right");
 
             }
-        });
+        });*/
 
         //Restart
         restartBtn.setOnClickListener(new View.OnClickListener() {
             // Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelThreeActivity.this, LevelThreeActivity.class);
+                Intent intent = new Intent(LevelFiveActivity.this, LevelFiveActivity.class);
                 finish();
                 startActivity(intent);
-                customType(LevelThreeActivity.this,"fadein-to-fadeout");
+                customType(LevelFiveActivity.this,"fadein-to-fadeout");
 
             }
         });
@@ -407,10 +386,10 @@ public class LevelThreeActivity extends Activity {
         levelsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelThreeActivity.this, LevelsActivity.class);
+                Intent intent = new Intent(LevelFiveActivity.this, LevelsActivity.class);
                 finish();
                 startActivity(intent);
-                customType(LevelThreeActivity.this,"up-to-bottom");
+                customType(LevelFiveActivity.this,"up-to-bottom");
 
             }
         });
@@ -420,12 +399,12 @@ public class LevelThreeActivity extends Activity {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(LevelThreeActivity.this, TableScoreActivity.class);
+                Intent intent = new Intent(LevelFiveActivity.this, TableScoreActivity.class);
 
                 intent.putExtra("level", current_level);
 
                 startActivity(intent);
-                customType(LevelThreeActivity.this,"fadein-to-fadeout");
+                customType(LevelFiveActivity.this,"fadein-to-fadeout");
             }
         });
 
@@ -447,5 +426,4 @@ public class LevelThreeActivity extends Activity {
         startActivity(intent);
         customType(this, "up-to-bottom");
     }
-
 }

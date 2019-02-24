@@ -33,6 +33,7 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
         levelTwo_Btn.setOnClickListener(this);
         levelFour_Btn.setOnClickListener(this);
         levelThree_Btn.setOnClickListener(this);
+        levelFive_Btn.setOnClickListener(this);
 
 
         sp = getSharedPreferences("details", MODE_PRIVATE);
@@ -78,6 +79,10 @@ public class LevelsActivity extends Activity implements Button.OnClickListener {
             case R.id.levelThree_Btn:
                 intent = new Intent(this, LevelThreeActivity.class);
                 break;
+            case R.id.levelFive_Btn:
+                intent = new Intent(this, LevelFiveActivity.class);
+                break;
+
 
 
         }

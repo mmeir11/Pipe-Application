@@ -12,4 +12,6 @@
     <string name="name">Name:</string>
     <string name="score">Score:</string>
     <string name="gameOver">GAME OVER</string>
+    <string name="time">Time:</string>
+    <string name="move">Moves:</string>
 </resources>

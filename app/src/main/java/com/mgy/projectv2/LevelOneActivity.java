@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -212,6 +213,14 @@ public class LevelOneActivity extends Activity implements ImageButton.OnClickLis
     private void SetAnim()
     {
         gameObject.countDownTimer.cancel();
+
+
+        MediaPlayer mediaPlayerWin = MediaPlayer.create(this, R.raw.win_sound);
+        if(gameObject.sp.getBoolean("music", true))
+        {
+            mediaPlayerWin.start();
+        }
+
 
         p1.setEnabled(false);
         p2.setEnabled(false);

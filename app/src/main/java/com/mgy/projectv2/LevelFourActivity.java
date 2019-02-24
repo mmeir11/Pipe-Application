@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -276,6 +277,12 @@ public class LevelFourActivity extends Activity {
     {
 
         gameObject.countDownTimer.cancel();
+
+//        MediaPlayer mediaPlayerWin = MediaPlayer.create(this, R.raw.win_sound);
+        if(gameObject.sp.getBoolean("music", true))
+        {
+            gameObject.mediaPlayerWin.start();
+        }
 
         for (Pipe pipe : gameObject.pipeArrayList)
             pipe.pipeImage.setEnabled(false);
