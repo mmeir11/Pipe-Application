@@ -3,17 +3,28 @@ package com.mgy.projectv2;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TableScoreActivity extends Activity {
+
+    private static final String FILE_NAME = "score.txt";
+
+    private String nameRes;
+    private String scoreRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +33,8 @@ public class TableScoreActivity extends Activity {
 
         ListView scoreTable = findViewById(R.id.score_table);
 
-        String nameRes = getResources().getString(R.string.name);
-        String scoreRes = getResources().getString(R.string.score);
+        nameRes = getResources().getString(R.string.name);
+        scoreRes = getResources().getString(R.string.score);
 
         SharedPreferences sp = getSharedPreferences("details", MODE_PRIVATE);
         ArrayList<User> users = null;
@@ -36,7 +47,7 @@ public class TableScoreActivity extends Activity {
         int current_level = getIntent().getIntExtra("level", -1);
         List<Map<String, Object>> userData = new ArrayList<>();
 
-        for (int i=0 ; i < users.size() ; i++)
+       /* for (int i=0 ; i < users.size() ; i++)
         {
             if(users.get(i).scoreArray[current_level] != 0)
             {
@@ -46,7 +57,7 @@ public class TableScoreActivity extends Activity {
 
                 userData.add(userHashMap);
             }
-        }
+        }*/
 
         String[] from = {"name", "score"};
         int[] to = {R.id.name_TextView, R.id.score_TextView};
@@ -56,4 +67,33 @@ public class TableScoreActivity extends Activity {
         scoreTable.setAdapter(simpleAdapter);
 
     }
+
+    public void save(View v){
+        FileOutputStream fos = null;
+        FileInputStream fis = null;
+
+        try {
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            fos.write(nameRes.getBytes());
+            fos.write(scoreRes.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if(fos != null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+
 }

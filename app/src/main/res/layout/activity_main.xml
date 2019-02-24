@@ -76,6 +76,15 @@
             android:layout_below="@id/space"
             android:id="@+id/play_btn"/>
 
+    <ImageButton
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/score_btn"
+        android:layout_toEndOf="@+id/play_btn"
+        android:layout_below="@+id/space"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="25dp"/>
+
 
 
 

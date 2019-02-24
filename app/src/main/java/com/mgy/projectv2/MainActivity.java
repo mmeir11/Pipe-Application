@@ -80,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton scoreBtn = findViewById(R.id.score_btn);
+        scoreBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TableScoreActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
