@@ -29,7 +29,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".LevelsActivity" />
         <activity android:name=".TableScoreActivity" />
-        <activity android:name=".LevelFourActivity"></activity>
+        <activity android:name=".LevelFourActivity" />
+        <activity android:name=".LevelThreeActivity"></activity>
     </application>
 
 </manifest>

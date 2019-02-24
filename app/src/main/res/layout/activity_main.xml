@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/logoTitle"
             android:gravity="center"
-            android:background="@drawable/level_btn2"
             android:id="@+id/welcome_layout">
 
                 <TextView

@@ -61,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
             else{
                 String current_name = name_TextView.getText().toString();
                 users.add(new User(sp.getString(current_name, null)));    //need to add the name to table
-            }
+
+            try {   //save the names and score ArrayList
+                sp.edit().putString("users", ObjectSerializer.serialize(users)).commit();
+            } catch (IOException e) {e.printStackTrace(); }
+
+        }
 
 
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.bubbling_water);
@@ -124,6 +129,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         PlayMusic();
+
+
+
+        try     //initialize the users ArrayList for score table
+        {
+            users = (ArrayList<User>) ObjectSerializer.deserialize(sp.getString("users", ObjectSerializer.serialize(new ArrayList<String>())));
+            name_TextView.setText( users.get(users.size()-1).name );  //initialize the last user name
+
+        }catch (IOException e) { e.printStackTrace(); }
+        catch (ClassNotFoundException e) { e.printStackTrace(); }
+
     }
 
     @Override
@@ -131,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(mediaPlayer.isPlaying())
             mediaPlayer.pause();
-        super.onPause();
+
 
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("notFirstRun", false);
@@ -142,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {e.printStackTrace(); }
 
         editor.commit();
+
+        super.onPause();
     }
 
     @Override
@@ -165,25 +183,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(item.getItemId() == R.id.changeName){
 
-            View menuDialog_Layout = getLayoutInflater().inflate(R.layout.change_name_dialog, null);
+            View changeNameDialog_Layout = getLayoutInflater().inflate(R.layout.change_name_dialog, null);
 
 
+            final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-        /*    Dialog dialog = new Dialog(MainActivity.this);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-            dialog.setContentView(menuDialog_Layout);
-                if(!isFinishing())
-                dialog.show();*/
+            final EditText editNameEt = changeNameDialog_Layout.findViewById(R.id.editName_EditText);
+            final ImageButton editNameBtn = changeNameDialog_Layout.findViewById(R.id.editName_ImageButton);
 
-
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-            final EditText editNameEt = menuDialog_Layout.findViewById(R.id.editName_EditText);
-            final ImageButton editNameBtn = menuDialog_Layout.findViewById(R.id.editName_ImageButton);
-
-            builder.setView(menuDialog_Layout).show();
+            builder.setView(changeNameDialog_Layout).show();
 
             //Edit Name
             editNameBtn.setOnClickListener(new View.OnClickListener() {
@@ -195,11 +203,11 @@ public class MainActivity extends AppCompatActivity {
 
                         name_TextView.setText(newName);
                         editNameEt.setText("");
-                        Toast.makeText(MainActivity.this, "The Edit was succsses", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "The Edit was succsses " + newName, Toast.LENGTH_SHORT).show();
 
                         users.add(new User(newName));   //save the new player in last index in ArrayList
                         try {   //save the names and score ArrayList
-                            sp.edit().putString("users", ObjectSerializer.serialize(users));
+                            sp.edit().putString("users", ObjectSerializer.serialize(users)).commit();
                         } catch (IOException e) {e.printStackTrace(); }
 
 
